@@ -15,11 +15,12 @@ A fully responsive, animated calculator built with HTML, CSS, and JavaScript. Fe
 ## 📁 Project Structure
 
 Animated-Calculator/
-│
-├── index.html # Main HTML structure
-├── style.css # Styling & animations
-├── script.js # Logic and interactivity
-└── README.md # This file
+- index.html        → Main HTML file
+- style.css         → Styling & animations
+- script.js         → JavaScript logic and interactive
+- image.png         → screenshort
+- README.md         → this file
+
 
 ## 🛠️ Technologies Used
 - HTML5
