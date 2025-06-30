@@ -9,8 +9,8 @@ A fully responsive, animated calculator built with HTML, CSS, and JavaScript. Fe
 - Mobile Responsive 📱
 - Beautiful Gradient Buttons 🎨
 
-## 🚀 Live Demo
-👉 [Click to View on GitHub Pages](https://kavita355321.github.io/Animated-Calculator)
+## 📸 Screenshot
+👉 ![Animated Calculator Screenshot](https://github.com/kavita355321/Animated-Calculator/blob/main/image.png?raw=true)
 
 ## 📁 Project Structure
 
@@ -26,10 +26,10 @@ Animated-Calculator/
 - CSS3
 - JavaScript
 
-## 📸 Screenshot
-![Calculator Screenshot](https://your-screenshot-url.com)
+## 👩‍💻 About Me
 
-## 👩‍💻 Author
-**Kavita**, Computer Science Graduate & Aspiring Frontend/Data Analyst  
-
+**Kavita** 
+💼 BSc Hons. Computer Science | Delhi University  
+📫 Email: kavita355321@gmail.com  
+📍 New Delhi, India
 ---
