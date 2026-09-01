@@ -1,53 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Animated Calculator</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="theme-toggle">
-    <label>
-      <input type="checkbox" id="toggleDark" /> 🌙 Dark Mode
-    </label>
-  </div>
+<!doctype html>
+<html lang="en-GB" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Precision is an accessible calculator with keyboard input, local history and a tested expression parser." />
+    <meta name="theme-color" content="#e9eee9" />
+    <title>Precision | A safer JavaScript calculator</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#calculator">Skip to calculator</a>
+    <header>
+      <a class="brand" href="#top"><span aria-hidden="true">±</span><strong>PRECISION</strong></a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false"><span aria-hidden="true">◐</span> Theme</button>
+    </header>
 
-  <div id="calculator">
-    <input type="text" id="display" readonly />
+    <main id="top">
+      <section class="intro">
+        <p class="eyebrow">Vanilla JavaScript · No eval()</p>
+        <h1>Small tool.<br />Serious engineering.</h1>
+        <p>A responsive calculator built around a custom expression parser, safe input handling and complete keyboard support.</p>
+        <ul><li>Operator precedence</li><li>Local calculation history</li><li>Accessible interaction</li></ul>
+      </section>
 
-    <div class="btn-container">
-      <button class="btn special" onclick="clearDisplay()">C</button>
-      <button class="btn special" onclick="backspace()">⌫</button>
-      <button class="btn operator" onclick="appendToDisplay('%')">%</button>
-      <button class="btn operator" onclick="appendToDisplay('/')">/</button>
+      <section class="calculator-panel" id="calculator" aria-labelledby="calculator-title">
+        <div class="calculator-heading"><div><p class="eyebrow">Calculator</p><h2 id="calculator-title">Precision</h2></div><span>DEG</span></div>
+        <div class="display" aria-live="polite" aria-atomic="true">
+          <p id="expression">0</p>
+          <output id="result">0</output>
+          <span class="status" id="status" role="status"></span>
+        </div>
 
-      <button class="btn number" onclick="appendToDisplay('7')">7</button>
-      <button class="btn number" onclick="appendToDisplay('8')">8</button>
-      <button class="btn number" onclick="appendToDisplay('9')">9</button>
-      <button class="btn operator" onclick="appendToDisplay('*')">*</button>
+        <div class="keypad">
+          <button class="key key-muted" type="button" data-action="clear">AC</button>
+          <button class="key key-muted" type="button" data-action="backspace" aria-label="Backspace">⌫</button>
+          <button class="key key-muted" type="button" data-action="percent" aria-label="Convert current value to percentage">%</button>
+          <button class="key key-operator" type="button" data-action="operator" data-value="/" aria-label="Divide">÷</button>
 
-      <button class="btn number" onclick="appendToDisplay('4')">4</button>
-      <button class="btn number" onclick="appendToDisplay('5')">5</button>
-      <button class="btn number" onclick="appendToDisplay('6')">6</button>
-      <button class="btn operator" onclick="appendToDisplay('-')">-</button>
+          <button class="key" type="button" data-action="digit" data-value="7">7</button>
+          <button class="key" type="button" data-action="digit" data-value="8">8</button>
+          <button class="key" type="button" data-action="digit" data-value="9">9</button>
+          <button class="key key-operator" type="button" data-action="operator" data-value="*" aria-label="Multiply">×</button>
 
-      <button class="btn number" onclick="appendToDisplay('1')">1</button>
-      <button class="btn number" onclick="appendToDisplay('2')">2</button>
-      <button class="btn number" onclick="appendToDisplay('3')">3</button>
-      <button class="btn operator" onclick="appendToDisplay('+')">+</button>
+          <button class="key" type="button" data-action="digit" data-value="4">4</button>
+          <button class="key" type="button" data-action="digit" data-value="5">5</button>
+          <button class="key" type="button" data-action="digit" data-value="6">6</button>
+          <button class="key key-operator" type="button" data-action="operator" data-value="-" aria-label="Subtract">−</button>
 
-      <button class="btn number" onclick="appendToDisplay('0')">0</button>
-      <button class="btn number" onclick="appendToDisplay('.')">.</button>
-      <button class="btn equal" onclick="calculate()">=</button>
-    </div>
-  </div>
+          <button class="key" type="button" data-action="digit" data-value="1">1</button>
+          <button class="key" type="button" data-action="digit" data-value="2">2</button>
+          <button class="key" type="button" data-action="digit" data-value="3">3</button>
+          <button class="key key-operator" type="button" data-action="operator" data-value="+" aria-label="Add">+</button>
 
-  <div id="history">
-    <h2>🧾 History</h2>
-    <ul id="history-list"></ul>
-  </div>
+          <button class="key" type="button" data-action="negate" aria-label="Change sign">+/−</button>
+          <button class="key" type="button" data-action="digit" data-value="0">0</button>
+          <button class="key" type="button" data-action="decimal" aria-label="Decimal point">.</button>
+          <button class="key key-equals" type="button" data-action="equals" aria-label="Calculate result">=</button>
+        </div>
+        <p class="keyboard-hint">Keyboard: numbers and operators · Enter to calculate · Escape to clear</p>
+      </section>
 
-  <script src="script.js"></script>
-</body>
+      <aside class="history-panel" aria-labelledby="history-title">
+        <div class="history-heading"><div><p class="eyebrow">Stored on this device</p><h2 id="history-title">History</h2></div><button id="clear-history" type="button">Clear</button></div>
+        <ol id="history-list"></ol>
+      </aside>
+    </main>
+
+    <section class="engineering">
+      <div><p class="eyebrow">What changed</p><h2>From animated demo to tested application.</h2></div>
+      <div><p>The original version evaluated user input as JavaScript. Precision now tokenises and parses arithmetic itself, so expressions are treated as maths—not executable code.</p><dl><div><dt>Parser</dt><dd>Recursive descent</dd></div><div><dt>Tests</dt><dd>Node test runner</dd></div><div><dt>Data</dt><dd>Local only</dd></div></dl></div>
+    </section>
+
+    <footer><a class="brand" href="#top"><span aria-hidden="true">±</span><strong>PRECISION</strong></a><p>JavaScript portfolio project by Kavita.</p><p>© <span id="year"></span></p></footer>
+  </body>
 </html>
+
